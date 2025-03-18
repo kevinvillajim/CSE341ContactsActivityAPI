@@ -8,7 +8,7 @@ const doc = {
 		title: "Contacts Api",
 		description: "API for managing contacts",
 	},
-	host: "https://cse341contactsactivityapi.onrender.com/",
+	host: "https://cse341contactsactivityapi.onrender.com",
 	schemes: ["https", "http"],
 	basePath: "/contacts",
 };
