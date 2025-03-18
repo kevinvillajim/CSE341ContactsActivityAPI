@@ -1,0 +1,25 @@
+Listado de rutas de carpetas
+El n�mero de serie del volumen es 7C1B-BCDF
+C:.
+|   .gitignore
+|   estructura_carpetas.txt
+|   package-lock.json
+|   package.json
+|   server.js
+|   swagger.js
+|   swagger.json
+|   
+\---src
+    +---config
+    |       database.js
+    |       
+    +---controllers
+    |       contactController.js
+    |       
+    +---data
+    |       contacts.json
+    |       
+    \---routes
+            contactRoutes.js
+            swagger.js
+            
