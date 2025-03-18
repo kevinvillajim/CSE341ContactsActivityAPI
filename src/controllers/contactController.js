@@ -119,17 +119,22 @@ async function deleteContact(req, res) {
 //Delete all contacts in the DB
 
 async function deleteAllContacts(req, res) {
-  try {
-    const db = getDB();
-    const result = await db.collection(collection).deleteMany({});
-    res.status(200).json({
-      deletedCount: result.deletedCount,
-      message: "All contacts deleted",
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal server error" });
-  }
+	try {
+		const db = getDB();
+		const result = await db.collection(collection).deleteMany({});
+
+		console.log("Delete result:", result); 
+
+		res.status(200).json({
+			deletedCount: result.deletedCount,
+			message: "All contacts deleted",
+		});
+	} catch (error) {
+		console.error("Error deleting contacts:", error); // Más detalles del error
+		res
+			.status(500)
+			.json({error: "Internal server error", details: error.message});
+	}
 }
 
 module.exports = {
