@@ -12,6 +12,19 @@
     "http"
   ],
   "paths": {
+    "/load-contacts/run": {
+      "get": {
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/": {
       "get": {
         "description": "",
@@ -76,7 +89,7 @@
           }
         }
       },
-      "delete": {
+      "put": {
         "description": "",
         "parameters": [
           {
@@ -90,37 +103,22 @@
           "200": {
             "description": "OK"
           },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/load-contacts/run": {
-      "get": {
-        "description": "",
-        "responses": {
-          "201": {
-            "description": "Created"
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
           }
         }
-      }
-    },
-    "/{firstName}/{lastName}": {
-      "put": {
+      },
+      "delete": {
         "description": "",
         "parameters": [
           {
-            "name": "firstName",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "lastName",
+            "name": "_id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -129,9 +127,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"

@@ -71,25 +71,34 @@ async function loadContactsCollection(req, res) {
 //Update a contact in the DB by name and last name
 
 async function updateContact(req, res) {
-  try {
-    const db = getDB();
-    const result = await db
-      .collection(collection)
-      .updateOne(
-        { firstName: req.params.firstName, lastName: req.params.lastName },
-        { $set: req.body }
-      );
+	try {
+		const db = getDB();
+		const contactId = ObjectId.createFromHexString(req.params._id); // Get _id from path parameters
+		const updateData = req.body; // Get update data from the request body
 
-    if (result.modifiedCount === 0) {
-      return res.status(404).json({ error: "Contact not found" });
-    }
+		if (!updateData || Object.keys(updateData).length === 0) {
+			return res.status(400).json({error: "No update data provided"});
+		}
 
-    res.status(200).json({ modifiedCount: result.modifiedCount });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal server error" });
-  }
+		const result = await db.collection(collection).updateOne(
+			{_id: contactId}, // Find the contact by its _id
+			{$set: updateData} // Update the contact with the provided data
+		);
+
+		if (result.matchedCount === 0) {
+			return res.status(404).json({error: "Contact not found"});
+		}
+
+		res.status(200).json({
+			message: "Contact updated successfully",
+			modifiedCount: result.modifiedCount,
+		});
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({error: "Internal server error"});
+	}
 }
+
 
 //delete a contact in the DB by ID
 

@@ -10,12 +10,12 @@ const doc = {
 	},
 	host: "cse341contactsactivityapi.onrender.com",
 	schemes: ["https", "http"],
-	basePath: "/contacts",
+    basePath: "/contacts",
 };
 
 const outputFile = "./swagger.json";
 const endpointsFiles = ["./src/routes/contactRoutes.js"];
 
 swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
-	console.log("Swagger generated correctly.");
+    console.log("Swagger generated correctly.");
 });
