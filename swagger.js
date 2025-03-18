@@ -10,25 +10,8 @@ const doc = {
 	},
 	host: "cse341contactsactivityapi.onrender.com",
 	schemes: ["https", "http"],
-	basePath: "/contacts",
-	definitions: {
-		Contact: {
-			firstName: "John",
-			lastName: "Doe",
-			email: "john.doe@example.com",
-			favoriteColor: "Blue",
-			birthday: "1990-01-01",
-		},
-		ContactUpdate: {
-			firstName: "John",
-			lastName: "Doe",
-			email: "john.doe@example.com",
-			favoriteColor: "Blue",
-			birthday: "1990-01-01",
-		},
-	},
+    basePath: "/contacts",
 };
-
 
 const outputFile = "./swagger.json";
 const endpointsFiles = ["./src/routes/contactRoutes.js"];
