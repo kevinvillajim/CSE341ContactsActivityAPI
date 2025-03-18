@@ -1,16 +1,16 @@
 require("dotenv").config();
 const swaggerAutogen = require("swagger-autogen")();
 
-const PORT = process.env.PORT || 8080;
+// const PORT = process.env.PORT || 8080;
 
 const doc = {
 	info: {
 		title: "Contacts Api",
 		description: "API for managing contacts",
 	},
-	host: `localhost:${PORT}`,
-    schemes: ["http", "https"],
-    basePath: "/contacts",
+	host: "https://cse341contactsactivityapi.onrender.com/",
+	schemes: ["https", "http"],
+	basePath: "/contacts",
 };
 
 const outputFile = "./swagger.json";
